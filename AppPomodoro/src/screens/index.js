@@ -12,7 +12,6 @@ class TelaPrincipal extends Component{
                 <View style ={Styles.container}>
                     <Text>Olá mundo !</Text>
                     <BtnPrincipal/>
-                    
                 </View>
            
         )
