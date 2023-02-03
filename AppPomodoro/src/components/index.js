@@ -14,6 +14,7 @@ class Pomodoro extends Component {
         }
 
         this.vai = this.vai.bind(this);
+        this.limpar = this.limpar.bind(this);
 
         listening = null
 
@@ -43,13 +44,16 @@ class Pomodoro extends Component {
 
     }
 
-    limpar(){
-        if(listening != null){
+    limpar() {
+
+        if (listening != null) {
             clearInterval(listening)
             listening = null;
-            this.state.timerSeg = 59;
-            this.state.timerMin = 24;
+            this.setState({ botao: 'Start' })
         }
+        this.setState({ timerMin: this.state.timerMin = 25 });
+        this.setState({ timerSeg: this.state.timerSeg = 0 });
+
     }
 
     render() {
@@ -62,7 +66,7 @@ class Pomodoro extends Component {
                     {this.state.timerSeg.toString().padStart(2, '0')}
                 </Text>
                 <BtnPrincipal click={this.vai} txtBtn={this.state.botao} />
-                <BtnPrincipal click={this.limpar} txtBtn='Restart'/>
+                <BtnPrincipal click={this.limpar} txtBtn='Restart' />
             </View>
         )
     }
