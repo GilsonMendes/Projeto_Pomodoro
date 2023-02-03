@@ -40,6 +40,16 @@ class Pomodoro extends Component {
             }, 1000)
             this.setState({ botao: 'Stop' })
         }
+
+    }
+
+    limpar(){
+        if(listening != null){
+            clearInterval(listening)
+            listening = null;
+            this.state.timerSeg = 59;
+            this.state.timerMin = 24;
+        }
     }
 
     render() {
