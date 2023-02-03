@@ -8,7 +8,7 @@ export default props => {
 
         <View style={styles.btnArea}>
             <TouchableOpacity style={styles.btn} onPress={props.click}>
-                <Text style={styles.btnTxt}>Start</Text>
+                <Text style={styles.btnTxt}>{props.txtBtn}</Text>
             </TouchableOpacity>
         </View>
         

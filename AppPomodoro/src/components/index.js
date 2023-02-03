@@ -8,18 +8,38 @@ class Pomodoro extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            timerSeg: 59,
-            timerMin: 0
+            timerSeg: 0,
+            timerMin: 25,
+            botao: 'Start'
         }
 
         this.vai = this.vai.bind(this);
 
+        listening = null
+
     }
 
     vai() {
-        setInterval(() => {
-            this.setState({ timerSeg: this.state.timerSeg - 1 })
-        }, 1000)
+        if (this.state.timerSeg === 0 && this.state.timerMin === 25) {
+            this.state.timerSeg = 59;
+            this.state.timerMin = 24;
+        }
+        if (listening != null) {
+            clearInterval(listening)
+            listening = null
+            this.setState({ botao: 'Start' })
+        } else {
+            listening = setInterval(() => {
+                this.setState({ timerSeg: this.state.timerSeg - 1 });
+                num = parseInt(this.state.timerSeg.toFixed())
+                if (num === 0) {
+                    this.setState({ timerMin: this.state.timerMin - 1 })
+                    this.state.timerSeg = 60;
+
+                }
+            }, 1000)
+            this.setState({ botao: 'Stop' })
+        }
     }
 
     render() {
@@ -31,7 +51,7 @@ class Pomodoro extends Component {
                     :
                     {this.state.timerSeg.toString().padStart(2, '0')}
                 </Text>
-                <BtnPrincipal click ={this.vai}/>
+                <BtnPrincipal click={this.vai} txtBtn={this.state.botao} />
             </View>
         )
     }
