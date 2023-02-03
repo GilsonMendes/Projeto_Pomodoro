@@ -62,6 +62,7 @@ class Pomodoro extends Component {
                     {this.state.timerSeg.toString().padStart(2, '0')}
                 </Text>
                 <BtnPrincipal click={this.vai} txtBtn={this.state.botao} />
+                <BtnPrincipal click={this.limpar} txtBtn='Restart'/>
             </View>
         )
     }
