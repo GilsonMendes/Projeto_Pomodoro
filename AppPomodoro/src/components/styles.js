@@ -15,20 +15,10 @@ export default StyleSheet.create({
         fontWeight: 700,
         marginTop: -150
     },
+    
     btnArea:{
         alignItems: 'center',
-        justifyContent:'center'
-
-    },
-
-    btn:{
-        alignItems:'center',
         justifyContent:'center',
-        marginTop: 110,
-        backgroundColor:'#FFF',
-        width: 100,
-        height:40,
-        borderRadius: 10
     },
 
     btnTxt:{

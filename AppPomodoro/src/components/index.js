@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import BtnPrincipal from "./btnPrincipal";
+import styles from "./styles";
 import Styles from "./styles";
 
 class Pomodoro extends Component {
@@ -10,7 +11,7 @@ class Pomodoro extends Component {
         this.state = {
             timerSeg: 0,
             timerMin: 25,
-            botao: 'Start'
+            botao: 'START'
         }
 
         this.vai = this.vai.bind(this);
@@ -28,7 +29,7 @@ class Pomodoro extends Component {
         if (listening != null) {
             clearInterval(listening)
             listening = null
-            this.setState({ botao: 'Start' })
+            this.setState({ botao: 'START' })
         } else {
             listening = setInterval(() => {
                 this.setState({ timerSeg: this.state.timerSeg - 1 });
@@ -39,7 +40,7 @@ class Pomodoro extends Component {
 
                 }
             }, 1000)
-            this.setState({ botao: 'Stop' })
+            this.setState({ botao: 'STOP' })
         }
 
     }
@@ -49,7 +50,7 @@ class Pomodoro extends Component {
         if (listening != null) {
             clearInterval(listening)
             listening = null;
-            this.setState({ botao: 'Start' })
+            this.setState({ botao: 'START' })
         }
         this.setState({ timerMin: this.state.timerMin = 25 });
         this.setState({ timerSeg: this.state.timerSeg = 0 });
@@ -65,9 +66,14 @@ class Pomodoro extends Component {
                     :
                     {this.state.timerSeg.toString().padStart(2, '0')}
                 </Text>
-                <BtnPrincipal click={this.vai} txtBtn={this.state.botao} />
-                <BtnPrincipal click={this.limpar} txtBtn='Restart' />
+
+                <BtnPrincipal click={this.vai} txtBtn={this.state.botao} marginTop={100} />
+                <BtnPrincipal click={this.limpar} txtBtn='RESET' marginTop={20} />
+
+
             </View>
+
+
         )
     }
 }
