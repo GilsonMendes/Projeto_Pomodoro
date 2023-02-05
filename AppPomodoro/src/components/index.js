@@ -24,7 +24,7 @@ class Pomodoro extends Component {
 
     vai() {
         if (this.state.timerSeg === 0 && this.state.timerMin === 25) {
-            this.state.timerSeg = 59;
+            this.state.timerSeg = 49;
             this.state.timerMin = 24;
         }
         if (listening != null) {
@@ -39,9 +39,9 @@ class Pomodoro extends Component {
                     this.setState({ timerMin: this.state.timerMin - 1 })
                     this.state.timerSeg = 60;
                 }
-                num2 = parseInt(this.state.timerMin.toFixed());
-                if (num === 0 && num2 === 0) {
-
+                num2 = parseInt(this.state.timerMin.toFixed(0));
+                if(num2 < 0){
+                    this.descansar()
                 }
             }, 1000)
             this.setState({ botao: 'STOP' })
@@ -94,7 +94,6 @@ class Pomodoro extends Component {
 
                 <BtnPrincipal click={this.vai} txtBtn={this.state.botao} marginTop={100} />
                 <BtnPrincipal click={this.limpar} txtBtn='RESET' marginTop={20} />
-
 
             </View>
 
