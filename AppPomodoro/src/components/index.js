@@ -16,6 +16,7 @@ class Pomodoro extends Component {
 
         this.vai = this.vai.bind(this);
         this.limpar = this.limpar.bind(this);
+        this.descansar = this.descansar.bind(this);
 
         listening = null
 
@@ -33,10 +34,13 @@ class Pomodoro extends Component {
         } else {
             listening = setInterval(() => {
                 this.setState({ timerSeg: this.state.timerSeg - 1 });
-                num = parseInt(this.state.timerSeg.toFixed())
+                num = parseInt(this.state.timerSeg.toFixed(0))
                 if (num === 0) {
                     this.setState({ timerMin: this.state.timerMin - 1 })
                     this.state.timerSeg = 60;
+                }
+                num2 = parseInt(this.state.timerMin.toFixed());
+                if (num === 0 && num2 === 0) {
 
                 }
             }, 1000)
@@ -54,6 +58,27 @@ class Pomodoro extends Component {
         }
         this.setState({ timerMin: this.state.timerMin = 25 });
         this.setState({ timerSeg: this.state.timerSeg = 0 });
+
+    }
+
+    descansar() {
+        this.state.timerMin = 4
+        this.state.timerSeg = 59
+        if (listening != null) {
+            clearInterval(listening)
+            listening = null
+            this.setState({ botao: 'START' })
+        } else {
+            listening = setInterval(() => {
+                this.setState({ timerSeg: this.state.timerSeg - 1 });
+                num = parseInt(this.state.timerSeg.toFixed())
+                if (num === 0) {
+                    this.setState({ timerMin: this.state.timerMin - 1 })
+                    this.state.timerSeg = 60;
+                }
+            }, 1000)
+            this.setState({ botao: 'STOP' })
+        }
 
     }
 
