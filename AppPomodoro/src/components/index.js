@@ -21,7 +21,6 @@ class Pomodoro extends Component {
         this.tocar = this.tocar.bind(this)
 
         listening = null
-        som = ''
 
     }
 
