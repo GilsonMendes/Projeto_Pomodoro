@@ -10,6 +10,7 @@ class TelaPrincipal extends Component {
         return (
 
             <View style={Styles.container}>
+                <Text style ={Styles.txtTela}>Pomodoro</Text>
                 <Image
                     source={require('../assets/cronometro.png')}
                 />

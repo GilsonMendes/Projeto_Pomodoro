@@ -25,6 +25,14 @@ export default StyleSheet.create({
         color:'#647',
         fontSize: 30,
         fontWeight:700
+    },
+
+    txtTela:{
+        color:'#FFF',
+        fontSize: 40,
+        marginTop: -50,
+        marginBottom: 30,
+        fontWeight: 700
     }
 
 
